@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Log;
 
-// Ruta para obtener todos los usuarios
+/*
+Ruta para obtener todos los usuarios
 Route::get('/users', function () {
     $servidor = "localhost";
     $usuario = "root";
@@ -29,14 +30,14 @@ Route::get('/users', function () {
 
     $conn->close();
     return response()->json($users);
-});
+}); 
 
-// Ruta para obtener un usuario por ID
+Ruta para obtener un usuario por ID
 Route::get('/users/{id}', function ($id) {
     return "obtener estudiante con ID $id";
 });
 
-// Ruta para crear un nuevo usuario
+Ruta para crear un nuevo usuario
 Route::post('/users', function (Request $request) {
     $servidor = "localhost";
     $usuario = "root";
@@ -72,12 +73,25 @@ Route::post('/users', function (Request $request) {
     return response()->json($response);
 });
 
-// Ruta para actualizar un usuario
+Ruta para actualizar un usuario
 Route::put('/users/{id}', function ($id) {
     return "actualizando estudiante con ID $id";
 });
 
-// Ruta para eliminar un usuario
+Ruta para eliminar un usuario
 Route::delete('/users/{id}', function ($id) {
     return "eliminando estudiante con ID $id";
 });
+*/
+
+/** ATTENDACE */
+Route::post('/register-attendance', [AttendanceController::class, 'registerAttendance']); // Ruta para registrar asistencia
+Route::get('/attendance', [AttendanceController::class, 'getAttendance']); // Ruta para obtener asistencia general
+Route::get('/users/{id}/attendance', [UserController::class, 'getUserAttendance']); // Ruta para obtener asistencia de un usuario por ID
+
+/** USERS */
+Route::get('/users', [UserController::class, 'index']); // Ruta para obtener todos los usuarios
+Route::get('/users/{id}', [UserController::class, 'show']); // Ruta para obtener un usuario por ID
+Route::post('/users', [UserController::class, 'store']); // Ruta para crear un nuevo usuario
+Route::put('/users/{id}', [UserController::class, 'update']); // Ruta para actualizar un usuario
+Route::delete('/users/{id}', [UserController::class, 'destroy']); // Ruta para eliminar un usuario
