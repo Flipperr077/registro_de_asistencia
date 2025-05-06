@@ -39,3 +39,28 @@ class AttendanceController extends Controller
 
     }
 }
+public function registrarDesdeOCR(Request $request)
+{
+    // Validar los datos recibidos del OCR
+    $validated = $request->validate([
+        'dni' => 'required|numeric',
+        'nombre' => 'required|string',
+        'apellido' => 'required|string',
+    ]);
+
+    // Buscar si ya existe el usuario
+    $user = User::firstOrCreate(
+        ['dni' => $validated['dni']],
+        ['name' => $validated['nombre'], 'surname' => $validated['apellido']]
+    );
+
+    // Registrar asistencia
+    $attendance = new Attendance();
+    $attendance->user_id = $user->id;
+    $attendance->school_day_id = null; // Podés adaptarlo si usás días escolares
+    $attendance->date = now();
+    $attendance->status = 'present';
+    $attendance->save();
+
+    return response()->json(['mensaje' => 'Asistencia registrada desde OCR'], 200);
+}
