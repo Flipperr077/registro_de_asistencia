@@ -64,11 +64,4 @@ public function registrarDesdeOCR(Request $request)
 
     return response()->json(['mensaje' => 'Asistencia registrada desde OCR'], 200);
 }
- /**
-     * Método requerido si usás Route::resource o si se accede a /attendance/{id}
-     */
-    public function show($id)
-    {
-        return response()->json(['mensaje' => "Mostrar asistencia con ID $id"], 200);
-    }
-}
+
