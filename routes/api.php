@@ -9,7 +9,6 @@ Route::prefix('v1')->group(function () {
     /** ATTENDACE */
     Route::get('/attendance', [AttendanceController::class, 'getAttendance']); // Ruta para obtener asistencia general
     Route::post('/attendance/storePresent', [AttendanceController::class, 'storePresent'])->name('attendance.store-present');
-    Route::post('/attendance/ocr', [AttendanceController::class, 'registrarDesdeOCR']);
 
     /** USERS */
     Route::get('/users', [UserController::class, 'index']); // Ruta para obtener todos los usuarios
