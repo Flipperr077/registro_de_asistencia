@@ -5,7 +5,7 @@
 
                 <!-- Ingreso de DNI para asistencia -->
                 <form action="{{ route('attendance.store-present') }}" name="asistencia" method="post">
-                    @csrf
+                    
                     <h1 class="my-4">Registro de Asistencia de Estudiantes</h1>
                     <!-- Mensaje de Estado -->
                     @if(Session('attendance-status'))
