@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
-                                        'https://testing02.com.ar/attendance/storePresent'
+                                        'https://testing02.com.ar/attendance/*'
         ]);
     })->create();
     ->withExceptions(function (Exceptions $exceptions) {
