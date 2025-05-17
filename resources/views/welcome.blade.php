@@ -26,7 +26,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-3">
-                                <label for="attendance_dni" class="form-label">Ingresar DNI (8 números)</label>
+                                <label for="attendance_dni" class="form-label">Ingresar DNI (5 números)</label>
                                 <input type="number" class="form-control" id="attendance_dni" name="attendance_dni" maxlength="8" placeholder="DNI" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Registrar Asistencia</button>
