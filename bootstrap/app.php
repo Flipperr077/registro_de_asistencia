@@ -12,8 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         api: __DIR__.'/../routes/api.php',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
-    })
+        $middleware->validateCsrfTokens(except: [
+                                        'https://testing02.com.ar/attendance/storePresent'
+        ]);
+    })->create();
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
